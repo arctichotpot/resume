@@ -1,8 +1,7 @@
 import {Button, Space} from "@douyinfe/semi-ui";
-import ReactMarkdown from 'react-markdown'
+import MarkdownEditor from "../components/MarkdownEditor";
 
 export default function Markdown() {
-    const markdown = `A paragraph with *emphasis* and **strong importance**.`
 
     return <div>
         <Space>
@@ -14,7 +13,7 @@ export default function Markdown() {
             <Button theme='solid' type='primary'>致谢</Button>
         </Space>
         <div>
-            <ReactMarkdown children={markdown}></ReactMarkdown>
+            <MarkdownEditor/>
         </div>
     </div>
 }
