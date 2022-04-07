@@ -1,8 +1,8 @@
 import styled from "@emotion/styled";
-import {Button, Space, Typography} from '@douyinfe/semi-ui';
-import {IconGithubLogo} from "@douyinfe/semi-icons";
+import { Button, Space, Typography } from '@douyinfe/semi-ui';
+import { IconGithubLogo } from "@douyinfe/semi-icons";
 import ParticlesBg from "particles-bg";
-import {useNavigate} from "react-router";
+import { useNavigate } from "react-router";
 
 const DashboardLayout = styled.div`
   width: 100vw;
@@ -28,8 +28,8 @@ const shuffleArray = array => {
     return array
 }
 
-export default function Dashboard() {
-    const {Title, Text} = Typography;
+export default function Dashboard () {
+    const { Title, Text } = Typography;
     const navigate = useNavigate()
     const bgList = ["color", "ball", "polygon", "square",]
     const bg = shuffleArray(bgList)[0]
@@ -40,26 +40,26 @@ export default function Dashboard() {
 
     return <DashboardLayout>
         <Space vertical align='start'>
-            <DashboardTitle>简单易用的 <br/>简历在线生成网站</DashboardTitle>
-            <Title heading={2} spacing="extended" style={{fontSize: '18px'}}>
+            <DashboardTitle>简单易用的 <br />简历在线生成网站</DashboardTitle>
+            <Title heading={2} spacing="extended" style={{ fontSize: '18px' }}>
                 这是一个由 <Text type="danger">React</Text>
                 + <Text type="danger">Node</Text>
-                制作的简易的简历生成网站<br/>
+                制作的简易的简历生成网站<br />
                 在这里你可以用
                 <Text type="danger">MarkDown</Text>
                 来制作你的简历,并可以导出为 <Text type="danger">Pdf</Text>
                 , <Text type="danger">Word</Text>
                 ,或者 <Text type="danger">MarkDown</Text>
-                格式文件<br/>
+                格式文件<br />
                 网站目前已经完全开源
             </Title>
             <Space>
-                <Button size='large' theme='solid' type='primary' style={{fontSize: '16px'}}
-                        onClick={() => navigate('/resume/md')}>开始制作简历</Button>
-                <Button icon={<IconGithubLogo/>} size='large' type="tertiary" style={{fontSize: '16px'}}
-                        onClick={openGitHub}>GitHub</Button>
+                <Button size='large' theme='solid' type='primary' style={{ fontSize: '16px' }}
+                    onClick={() => navigate('/resume/md')}>开始制作简历</Button>
+                <Button icon={<IconGithubLogo />} size='large' type="tertiary" style={{ fontSize: '16px' }}
+                    onClick={openGitHub}>GitHub</Button>
             </Space>
         </Space>
-        <ParticlesBg type={bg} bg={true}/>
+        <ParticlesBg type={bg} bg={true} />
     </DashboardLayout>
 }
