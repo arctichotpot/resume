@@ -1,21 +1,18 @@
 from flask import Flask
 from config import siteConfig
-
-app = Flask(__name__)
+from file.toPdf import toPdf
+from file.pdfTo import pdfTo
 
 HOST = siteConfig["host"]
 PORT = siteConfig["port"]
 ISDEBUG = siteConfig["debug"]
 
+app = Flask(__name__)
 
-@app.route('/')
-def hello():
-    return "hello"
+app.register_blueprint(toPdf, url_prefix='/toPdf')
+app.register_blueprint(pdfTo, url_prefix='/pdfTo')
 
-
-@app.route('/test_post', methods=["POST"])
-def test():
-    return "test_post"
-
+if __name__ == '__main__':
+    app.run()
 
 app.run(host=HOST, port=PORT, debug=ISDEBUG)
