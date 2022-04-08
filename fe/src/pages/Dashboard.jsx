@@ -5,6 +5,7 @@ import ParticlesBg from "particles-bg";
 import { useNavigate } from "react-router";
 
 const DashboardLayout = styled.div`
+  overflow:hidden;
   width: 100vw;
   height: 100vh;
   display: flex;
@@ -43,7 +44,7 @@ export default function Dashboard () {
             <DashboardTitle>简单易用的 <br />简历在线生成网站</DashboardTitle>
             <Title heading={2} spacing="extended" style={{ fontSize: '18px' }}>
                 这是一个由 <Text type="danger">React</Text>
-                + <Text type="danger">Node</Text>
+                + <Text type="danger">Python</Text>
                 制作的简易的简历生成网站<br />
                 在这里你可以用
                 <Text type="danger">MarkDown</Text>
@@ -51,7 +52,6 @@ export default function Dashboard () {
                 , <Text type="danger">Word</Text>
                 ,或者 <Text type="danger">MarkDown</Text>
                 格式文件<br />
-                网站目前已经完全开源
             </Title>
             <Space>
                 <Button size='large' theme='solid' type='primary' style={{ fontSize: '16px' }}
