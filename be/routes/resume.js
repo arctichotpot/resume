@@ -6,21 +6,11 @@ const { mdToPdf } = require('md-to-pdf');
 
 
 router.post('/toPdf', async (req, res) => {
-    const { html } = req.query
+    const { markdown } = req.body
+    const file = await mdToPdf({ content: markdown })
 
-    // const mdFile = Buffer.from(html)
-
-    const pdf = await mdToPdf({ content: html })
-
-
-    // const file = await mdToPdf(html)
-
-    console.log(pdf)
-
-    // res.type('pdf');
-    // res.end(Buffer.from(file.content, 'binary'));
-    // res.send(Buffer(file, 'binary'))
-    // res.send(file)
+    res.type('pdf');
+    res.send(Buffer.from(file.content, 'binary'))
 })
 
 

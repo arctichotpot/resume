@@ -44,7 +44,7 @@ export default function Dashboard () {
             <DashboardTitle>简单易用的 <br />简历在线生成网站</DashboardTitle>
             <Title heading={2} spacing="extended" style={{ fontSize: '18px' }}>
                 这是一个由 <Text type="danger">React</Text>
-                + <Text type="danger">Python</Text>
+                + <Text type="danger">Node</Text>
                 制作的简易的简历生成网站<br />
                 在这里你可以用
                 <Text type="danger">MarkDown</Text>
