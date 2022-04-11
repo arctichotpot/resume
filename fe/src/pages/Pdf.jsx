@@ -3,8 +3,9 @@ import { resumeState } from "../store/store";
 import styled from "@emotion/styled";
 import MarkdownIt from 'markdown-it';
 import "../styles/markdown.scss"
-import { Card, Empty } from "@douyinfe/semi-ui"
+import { Card, Empty, Button } from "@douyinfe/semi-ui"
 import EmptySvg from "../assets/images/empty.svg"
+import { downloadPdf } from "../http";
 
 const PdfContainer = styled.div`
     display:flex;
@@ -22,6 +23,19 @@ export default function Pdf () {
 
     const md = new MarkdownIt()
 
+    const download = () => {
+        downloadPdf(content).then(res => {
+            console.log(res)
+
+            const data = res.data;
+            const blob = new Blob([data]);
+            const blobUrl = window.URL.createObjectURL(blob);
+            downloadBlob(blobUrl);
+
+
+        })
+    }
+
     const renderJudge = () => {
         if (content === "")
             return <div style={{ marginTop: '100px' }}>
@@ -38,7 +52,21 @@ export default function Pdf () {
         </div>
     }
 
-    return <PdfContainer>
-        {renderJudge()}
-    </PdfContainer>
+    return <>
+        <Button onClick={() => download()}>下载</Button>
+        <PdfContainer>
+
+            {renderJudge()}
+        </PdfContainer>
+
+    </>
+}
+
+
+
+function downloadBlob (blobUrl) {
+    const a = document.createElement('a');
+    a.download = 'a.pdf';
+    a.href = blobUrl;
+    a.click();
 }
