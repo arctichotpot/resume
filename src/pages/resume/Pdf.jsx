@@ -3,11 +3,12 @@ import { resumeState } from "../../store/store";
 import styled from "@emotion/styled";
 import MarkdownIt from 'markdown-it';
 import "../../styles/markdown.scss"
-import { Card, Empty, Button } from "@douyinfe/semi-ui"
+import { Card, Empty } from "@douyinfe/semi-ui"
 import EmptySvg from "../../assets/images/empty.svg"
-import { downloadPdf } from "../../http";
-import { useState } from "react";
+import { useRef } from "react";
 import DownloadModal from "./component/DownloadModal"
+import { useReactToPrint } from 'react-to-print';
+import { createFile } from "../../utils/file";
 
 
 const PdfContainer = styled.div`
@@ -24,16 +25,20 @@ export default function Pdf () {
 
     const md = new MarkdownIt()
     const content = useRecoilValue(resumeState)
-    const [showModal, setShowModal] = useState(false)
+    const printRef = useRef()
 
-    const download = () => {
-        downloadPdf(content).then(res => {
-            const data = res.data;
-            const blob = new Blob([data]);
-            const blobUrl = window.URL.createObjectURL(blob);
-            downloadBlob(blobUrl);
-        })
+    const onPrintFile = (value, cb) => {
+        if (value === "md") createFile(content, 'md')
+        if (value === "html") {
+            const html = md.render(content)
+            createFile(html, 'html')
+        }
+        // if (value === "word") createMdFile(content)
     }
+
+    const onPrintPdf = useReactToPrint({
+        content: () => printRef.current,
+    });
 
     const renderJudge = () => {
         if (content === "")
@@ -45,28 +50,18 @@ export default function Pdf () {
                 />
             </div>
         else return <div style={{ 'overflowY': 'scroll' }}>
-            <CardStyle>
+
+            <CardStyle ref={printRef} >
                 <div className="markdown-body" dangerouslySetInnerHTML={{ __html: md.render(content) }}></div>
             </CardStyle>
         </div>
     }
 
     return <>
-        <DownloadModal />
-        {/* {content ?  : ''} */}
-        {/* <Button style={{ float: 'right' }} theme='solid' type='primary' onClick={() => download()}>下载</Button> */}
+        <DownloadModal onPrintPdf={onPrintPdf} onPrintFile={value => onPrintFile(value)} />
         <PdfContainer>
             {renderJudge()}
         </PdfContainer>
 
     </>
-}
-
-
-
-function downloadBlob (blobUrl) {
-    const a = document.createElement('a');
-    a.download = 'a.pdf';
-    a.href = blobUrl;
-    a.click();
 }

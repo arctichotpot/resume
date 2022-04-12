@@ -19,7 +19,7 @@ export default function Resume () {
         setActiveKey(value)
     }
 
-    return <Tabs tabPosition="left" onChange={onChange} activeKey={activeKey}>
+    return <Tabs style={{ padding: '10px' }} tabPosition="left" onChange={onChange} activeKey={activeKey}>
         {
             tabs.map(item => <TabPane
                 tab={item.key}
