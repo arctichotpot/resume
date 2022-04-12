@@ -1,36 +1,33 @@
 import { TabPane, Tabs } from '@douyinfe/semi-ui';
-import { Outlet, useNavigate, useLocation } from "react-router";
 import { useState } from 'react';
-
+import Pdf from './Pdf';
+import ResumeTemplate from './Template';
+import Markdown from './Markdown';
 
 export default function Resume () {
 
-    const location = useLocation()
-    const navigate = useNavigate()
-
     const tabs = [
-        { name: '简历', path: '/resume/md' },
-        { name: 'PDF预览', path: '/resume/pdf' },
-        { name: '简历模板', path: '/resume/template' }
+        { key: '简历', value: 'md', component: <Markdown /> },
+        { key: 'PDF预览', value: 'pdf', component: <Pdf /> },
+        { key: '简历模板', value: 'template', component: <ResumeTemplate /> }
     ]
 
-    const [activeKey, setActiveKey] = useState(location.pathname)
+    const [activeKey, setActiveKey] = useState('md')
 
 
     const onChange = (value) => {
         setActiveKey(value)
-        navigate(value)
     }
 
-    return <div style={{ padding: '10px' }} >
-        <Tabs tabPosition="left" onChange={onChange} activeKey={activeKey}>
-            {tabs.map(item => <TabPane
-                tab={item.name}
-                itemKey={item.path}
-                key={item.path}
+    return <Tabs tabPosition="left" onChange={onChange} activeKey={activeKey}>
+        {
+            tabs.map(item => <TabPane
+                tab={item.key}
+                itemKey={item.value}
+                key={item.value}
             >
-                <Outlet />
-            </TabPane>)}
-        </Tabs>
-    </div>
+                {item.component}
+            </TabPane>)
+        }
+    </Tabs>
 }

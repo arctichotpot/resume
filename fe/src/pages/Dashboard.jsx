@@ -55,7 +55,7 @@ export default function Dashboard () {
             </Title>
             <Space>
                 <Button size='large' theme='solid' type='primary' style={{ fontSize: '16px' }}
-                    onClick={() => navigate('/resume/md')}>开始制作简历</Button>
+                    onClick={() => navigate('/resume')}>开始制作简历</Button>
                 <Button icon={<IconGithubLogo />} size='large' type="tertiary" style={{ fontSize: '16px' }}
                     onClick={openGitHub}>GitHub</Button>
             </Space>

@@ -3,10 +3,11 @@ import { resumeState } from "../../store/store";
 import styled from "@emotion/styled";
 import MarkdownIt from 'markdown-it';
 import "../../styles/markdown.scss"
-import { Card, Empty, Button, Modal } from "@douyinfe/semi-ui"
+import { Card, Empty, Button } from "@douyinfe/semi-ui"
 import EmptySvg from "../../assets/images/empty.svg"
 import { downloadPdf } from "../../http";
 import { useState } from "react";
+import DownloadModal from "./component/DownloadModal"
 
 
 const PdfContainer = styled.div`
@@ -51,7 +52,9 @@ export default function Pdf () {
     }
 
     return <>
-        <Button style={{ float: 'right' }} theme='solid' type='primary' onClick={() => download()}>下载</Button>
+        <DownloadModal />
+        {/* {content ?  : ''} */}
+        {/* <Button style={{ float: 'right' }} theme='solid' type='primary' onClick={() => download()}>下载</Button> */}
         <PdfContainer>
             {renderJudge()}
         </PdfContainer>
