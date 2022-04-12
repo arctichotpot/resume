@@ -19,7 +19,12 @@ const PdfContainer = styled.div`
 
 const CardStyle = styled(Card)`
     width:793px;
+    border:none;
 `
+
+const getPageMargins = () => {
+    return `@page { padding: 10px !important;margin:0 !important;  }`;
+};
 
 export default function Pdf () {
 
@@ -37,6 +42,8 @@ export default function Pdf () {
     }
 
     const onPrintPdf = useReactToPrint({
+        bodyClass: '.markdown-body',
+        pageStyle: `<style>${getPageMargins()}</style>`,
         content: () => printRef.current,
     });
 

@@ -22,9 +22,8 @@ Features:
 - [x] Pdf 文件导出
 - [x] Markdown 文件导出
 - [x] HTML 文件导出
-- [ ] 文件导出附带样式
+- [x] 文件导出附带样式
 - [ ] 主题选择
-- [ ] 简历模板
 
 Currently implemented :
 
@@ -32,6 +31,5 @@ Currently implemented :
 - [x] Pdf file export
 - [x] Markdown file export
 - [x] HTML file export
-- [ ] File export with styles
+- [x] File export with styles
 - [ ] Theme selection
-- [ ] Resume Template

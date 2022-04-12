@@ -22,11 +22,13 @@ export default function Markdown () {
     const handleClick = value => {
         const res = content + getContent(value)
         setContent(res)
-
+        localStorage.setItem('content', res)
     }
+
 
     const editorChange = value => {
         setContent(value)
+        localStorage.setItem('content', value)
     }
 
     return <div>
