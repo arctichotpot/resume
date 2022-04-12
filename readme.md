@@ -1,10 +1,13 @@
 一个比较简单的简历网站,自用,对比了下其他的简历网站完善了下功能
+
 A relatively simple resume site, self-use, compared to other resume sites to improve the function
 
 代码较简单,基于 Vite + React 实现
+
 The code is simple, based on Vite + React implementation
 
 功能介绍:
+
 Features:
 
 1. 用 markdown 制作简历,并可以导出为 Pdf,Markdown 以及 HTML 文件
