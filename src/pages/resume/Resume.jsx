@@ -9,7 +9,7 @@ export default function Resume () {
     const tabs = [
         { key: '简历', value: 'md', component: <Markdown /> },
         { key: 'PDF预览', value: 'pdf', component: <Pdf /> },
-        { key: '简历模板', value: 'template', component: <ResumeTemplate /> }
+        // { key: '简历模板', value: 'template', component: <ResumeTemplate /> }
     ]
 
     const [activeKey, setActiveKey] = useState('md')
