@@ -65,7 +65,9 @@ export default function Pdf () {
     }
 
     return <>
-        <DownloadModal onPrintPdf={onPrintPdf} onPrintFile={value => onPrintFile(value)} />
+        {content ?
+            <DownloadModal onPrintPdf={onPrintPdf} onPrintFile={value => onPrintFile(value)} /> : ''}
+
         <PdfContainer>
             {renderJudge()}
         </PdfContainer>
